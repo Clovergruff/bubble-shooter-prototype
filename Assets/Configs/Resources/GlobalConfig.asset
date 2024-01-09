@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a79446c44347273b553de0311a7849, type: 3}
+  m_Name: GlobalConfig
+  m_EditorClassIdentifier: 
+  data:
+    player: {fileID: 11400000, guid: 01d25540d5bf2b2cfadd05363ad41b60, type: 2}
+    defaultEnvironmentSkin: {fileID: 11400000, guid: 3af3fa06aa63f4de6a1b7af68673c95e, type: 2}
+    defaultProjectile: {fileID: 11400000, guid: 6367601a589a36897b46403a4218c20c, type: 2}
+  layers:
+    bubbles:
+      serializedVersion: 2
+      m_Bits: 1024
+    projectiles:
+      serializedVersion: 2
+      m_Bits: 2048
+  levels:
+  - {fileID: 11400000, guid: e3bf45ee978274dc28cb896bccd9026e, type: 2}
+  - {fileID: 11400000, guid: b720bbf3d87915fac96fa3c2764489f3, type: 2}
+  - {fileID: 11400000, guid: 44a86722ada0ba4f5bc6ecc197740500, type: 2}
+  - {fileID: 11400000, guid: 0592b3b0bb4227464bbed5cb22e1640a, type: 2}
+  - {fileID: 11400000, guid: 94ad0cd00bee7a01ab5bf0faa399d13a, type: 2}

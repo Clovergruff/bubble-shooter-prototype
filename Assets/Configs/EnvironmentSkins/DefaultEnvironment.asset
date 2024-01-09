@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c6738c8a44ca9c9b307dd908b7efc2, type: 3}
+  m_Name: DefaultEnvironment
+  m_EditorClassIdentifier: 
+  backgroundMaterial: {fileID: 2100000, guid: a07d2f0edc13c1c729b1a76abcf0f9c1, type: 2}
+  ambientLightColor: {r: 1, g: 1, b: 1, a: 1}
+  ambientLightIntensity: 1
+  sunlightColor: {r: 1, g: 1, b: 1, a: 1}
+  sunlightIntensity: 1
