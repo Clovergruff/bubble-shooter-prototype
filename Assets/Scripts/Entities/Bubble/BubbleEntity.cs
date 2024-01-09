@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BubbleEntity : MonoBehaviour
 {
+	private readonly Vector3 DEATH_GROW_SIZE = new Vector3(1.3f, 1.3f, 1.3f);
+
 	public BubbleData data;
 
 	[Space]
@@ -86,14 +88,6 @@ public class BubbleEntity : MonoBehaviour
 		if (isKilled)
 			return;
 
-		// foreach (var neighbor in _neighbors)
-		// {
-		// 	if (neighbor.isKilled || neighbor.data != data)
-		// 		continue;
-
-		// 	TryToKillNeighbors();
-		// }
-
 		List<BubbleEntity> matchingNeighbors = new List<BubbleEntity>();
 		matchingNeighbors.Add(this);
 
@@ -114,16 +108,17 @@ public class BubbleEntity : MonoBehaviour
 
 		if (matchingNeighbors.Count > 2)
 		{
-			Kill();
-			foreach (var similarNeighbor in matchingNeighbors)
+			Kill(0);
+			for (int i = 0; i < matchingNeighbors.Count; i++)
 			{
+				BubbleEntity similarNeighbor = matchingNeighbors[i];
 				similarNeighbor.TryToKillNeighbors();
-				similarNeighbor.Kill();
+				similarNeighbor.Kill(i * 0.05f);
 			}
 		}
 	}
 
-	public void Kill()
+	public void Kill(float delay)
 	{
 		if (isKilled)
 			return;
@@ -133,13 +128,28 @@ public class BubbleEntity : MonoBehaviour
 		StartCoroutine(KillCoroutine());
 		IEnumerator KillCoroutine()
 		{
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(delay);
+
+			float t = 0;
+			while (t < 1)
+			{
+				t += Time.deltaTime * 14;
+				transform.localScale = Vector3.Lerp(Vector3.one, DEATH_GROW_SIZE, t);
+				yield return null;
+			}
+
 			gameObject.SetActive(false);
+
 			ClearJoints();
 
 			foreach (var neighbor in _neighbors)
-			{
 				neighbor.CleanupJoints();
+
+			var nearbyColliders = Physics2D.OverlapCircleAll(transform.position, 2f, _globalConfig.layers.bubbles);
+			foreach (var coll in nearbyColliders)
+			{
+				if (coll.gameObject.TryGetComponent<Rigidbody2D>(out var otherRigidbody))
+					otherRigidbody.AddForce((otherRigidbody.transform.position - transform.position).normalized * 30);
 			}
 		}
 	}

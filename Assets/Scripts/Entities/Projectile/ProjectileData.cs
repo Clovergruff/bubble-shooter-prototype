@@ -6,4 +6,5 @@ using UnityEngine;
 public class ProjectileData : ScriptableObject
 {
 	public PhysicsMaterial2D physicsMaterial;
+	public float speed = 30;
 }

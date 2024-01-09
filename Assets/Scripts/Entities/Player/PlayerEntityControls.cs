@@ -80,12 +80,14 @@ public class PlayerEntityControls : MonoBehaviour
 
 	private void OnPressFire(InputAction.CallbackContext context)
 	{
+		var projectileData = _globalConfig.data.defaultProjectile;
+
 		ProjectileFactory.Create(
-			_globalConfig.data.defaultProjectile,
+			projectileData,
 			nextBubbleData,
 			_playerEntity.GetSkin().GetProjectileSpawnPoint(),
 			_aimPoint,
-			15);
+			projectileData.speed);
 
 		SetNextBubbleData();
 		RefreshNextBubbleColor();

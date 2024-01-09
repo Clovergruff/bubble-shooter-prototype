@@ -15,6 +15,7 @@ public static class ProjectileFactory
 		entity.collider = entity.gameObject.AddComponent<CircleCollider2D>();
 		entity.rigidbody = entity.gameObject.AddComponent<Rigidbody2D>();
 		entity.rigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
+		entity.rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 		entity.rigidbody.sharedMaterial = data.physicsMaterial;
 		entity.rigidbody.isKinematic = false;
 		entity.rigidbody.gravityScale = 0;
